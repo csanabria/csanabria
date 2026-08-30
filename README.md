@@ -1,6 +1,6 @@
 # Hola, soy Christian Sanabria 👋
 
-## QA Automation Engineer
+## Full Stack web developer - QA Automation Engineer
 
 ### Sobre mí
 - Apasionado por el desarrollo de software y la automatización de pruebas
