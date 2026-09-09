@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio de Christian Sanabria Jiménez - QA Automation Engineer. Experto en Playwright, CI/CD y pruebas automatizadas.">
+    <title>Christian Sanabria Jiménez | QA Automation Engineer</title>
+    
+    <!-- Tipografía: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables y Reset */
+        :root {
+            --bg-dark: #07110B;
+            --accent-green: #01C96E;
+            --text-light: #F0F4F8;
+            --text-muted: #A0B0A6;
+            --card-bg: #0D2015;
+            --transition: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utilidades */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--accent-green);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 4px;
+            border: 2px solid var(--accent-green);
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:hover, .btn:focus {
+            background-color: transparent;
+            color: var(--accent-green);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(1, 201, 110, 0.1);
+            color: var(--accent-green);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(1, 201, 110, 0.3);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(1, 201, 110, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(1, 201, 110, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(1, 201, 110, 0); }
+        }
+
+        /* Navegación */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(7, 17, 11, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-bg);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-green);
+        }
+
+        .menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu Activo */
+        .nav-links.active-menu {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-dark);
+            padding: 2rem;
+            border-bottom: 1px solid var(--accent-green);
+        }
+
+        /* Secciones */
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Hero */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* Sobre Mí */
+        #sobre-mi p {
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .skill-badge {
+            background-color: var(--card-bg);
+            border: 1px solid #1A3A25;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: border-color var(--transition);
+        }
+
+        .skill-badge:hover {
+            border-color: var(--accent-green);
+        }
+
+        /* Proyectos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-green);
+            transition: transform var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech span {
+            font-size: 0.75rem;
+            background-color: rgba(1, 201, 110, 0.1);
+            color: var(--accent-green);
+            padding: 0.25rem 0.5rem;
+            border-radius: 2px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            text-decoration: underline;
+        }
+
+        /* Contacto */
+        #contacto {
+            text-align: center;
+            background-color: var(--card-bg);
+            border-top: 1px solid #1A3A25;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-green);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Media Queries - Escritorio (Mobile-first fallback to Desktop) */
+        @media (min-width: 768px) {
+            .hero-content h1 { font-size: 4rem; }
+            .hero-content h2 { font-size: 2rem; }
+            
+            .menu-btn { display: none; }
+            .nav-links {
+                display: flex;
+                position: static;
+                flex-direction: row;
+                width: auto;
+                background: none;
+                padding: 0;
+                border: none;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-links {
+                flex-direction: row;
+                justify-content: center;
+                gap: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">&lt;QA /&gt;</a>
+            <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+                ☰
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="active">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="container hero-content">
+                <div class="status-badge" aria-label="Estado laboral: Disponibilidad inmediata">
+                    <span class="status-dot"></span>
+                    Disponibilidad inmediata
+                </div>
+                <h1>Christian Sanabria Jiménez</h1>
+                <h2>QA Automation Engineer</h2>
+                <p style="color: var(--text-muted); max-width: 600px; margin-bottom: 2rem;">
+                    Especialista en asegurar la calidad del software mediante la implementación de frameworks de pruebas robustos, escalables y mantenibles en entornos de integración continua.
+                </p>
+                <a href="ruta-a-tu-cv.pdf" class="btn" download="CV_[Tu_Nombre]_QA.pdf" aria-label="Descargar currículum vitae en formato PDF">Descargar CV</a>
+            </div>
+        </section>
+
+        <!-- Sobre Mí -->
+        <section id="sobre-mi">
+            <div class="container">
+                <h2 class="section-title">Sobre Mí</h2>
+                <p>
+                    Ingeniero con sólida experiencia analítica en aseguramiento de calidad (QA). Me enfoco en la automatización de pruebas e2e y APIs, aplicando principios de arquitectura de software para reducir la deuda técnica de pruebas. Acostumbrado a operar en metodologías ágiles e híbridas, integrando estrategias de TDD/BDD para alinear los estándares de desarrollo con los objetivos de negocio.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Habilidades Técnicas</h2>
+                <div class="skills-container">
+                    <span class="skill-badge">Playwright</span>
+                    <span class="skill-badge">Docker</span>
+                    <span class="skill-badge">Git</span>
+                    <span class="skill-badge">CI/CD</span>
+                    <span class="skill-badge">Postman</span>
+                    <span class="skill-badge">Selenium</span>
+                    <span class="skill-badge">JavaScript / TypeScript</span>
+                    <span class="skill-badge">SQL</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proyectos -->
+        <section id="proyectos">
+            <div class="container">
+                <h2 class="section-title">Proyectos Destacados</h2>
+                <div class="projects-grid">
+                    
+                    <!-- Proyecto 1 -->
+                    <article class="project-card">
+                        <h3>E2E con Playwright - E-commerce Suite</h3>
+                        <p>Framework de automatización end-to-end diseñado para una plataforma de e-commerce. Implementación de Page Object Model para asegurar mantenibilidad.</p>
+                        <div class="project-tech">
+                            <span>Playwright</span>
+                            <span>TypeScript</span>
+                            <span>GitHub Actions</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" rel="noopener noreferrer">Repositorio</a>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 2 -->
+                    <article class="project-card">
+                        <h3>API Testing Pipeline</h3>
+                        <p>Suite de validación de microservicios RESTful. Incluye validación de esquemas JSON, manejo dinámico de tokens y reportes automatizados mediante Allure.</p>
+                        <div class="project-tech">
+                            <span>Postman</span>
+                            <span>Newman</span>
+                            <span>Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" rel="noopener noreferrer">Repositorio</a>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 3 -->
+                    <article class="project-card">
+                        <h3>Data Generation Tool</h3>
+                        <p>Script de utilidad para la generación de datos de prueba seudonimizados, cumpliendo normativas de protección de datos en entornos no productivos.</p>
+                        <div class="project-tech">
+                            <span>Node.js</span>
+                            <span>JavaScript</span>
+                            <span>Jest</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" rel="noopener noreferrer">Repositorio</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto">
+            <div class="container">
+                <h2 class="section-title">Contacto</h2>
+                <p>Abierto a nuevas oportunidades y desafíos técnicos. Hablemos sobre arquitecturas de prueba y calidad de software.</p>
+                <div class="contact-links">
+                    <a href="mailto:tuemail@dominio.com" aria-label="Enviar correo electrónico">
+                        📧 tuemail@dominio.com
+                    </a>
+                    <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de LinkedIn">
+                        🔗 LinkedIn
+                    </a>
+                    <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de GitHub">
+                        💻 GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Christian Sanabria Jiménez. Desarrollado con HTML, CSS y JS puro.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica de Interacción -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lógica Menú Móvil
+            const menuBtn = document.getElementById('menuBtn');
+            const navLinks = document.getElementById('navLinks');
+
+            menuBtn.addEventListener('click', () => {
+                const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+                menuBtn.setAttribute('aria-expanded', !expanded);
+                navLinks.classList.toggle('active-menu');
+            });
+
+            // Cerrar menú móvil al hacer clic en un enlace
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if(window.innerWidth < 768) {
+                        navLinks.classList.remove('active-menu');
+                        menuBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            // Lógica Intersection Observer para resaltar enlaces del nav durante el scroll
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Se activa cuando el 50% de la sección es visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const currentId = entry.target.getAttribute('id');
+                        navItems.forEach(item => {
+                            item.classList.remove('active');
+                            if (item.getAttribute('href') === `#${currentId}`) {
+                                item.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>

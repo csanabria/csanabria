@@ -1,528 +1,726 @@
 <!DOCTYPE html>
-<html lang="es" style="scroll-behavior: smooth;">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio de Christian Sanabria Jiménez - QA Automation Engineer. Experto en Playwright, CI/CD y pruebas automatizadas.">
-    <title>Christian Sanabria Jiménez | QA Automation Engineer</title>
-    
-    <!-- Tipografía: Montserrat -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Variables y Reset */
-        :root {
-            --bg-dark: #07110B;
-            --accent-green: #01C96E;
-            --text-light: #F0F4F8;
-            --text-muted: #A0B0A6;
-            --card-bg: #0D2015;
-            --transition: 0.3s ease;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de QA Automatizador especializado en pruebas automatizadas, Playwright, Docker, Git, CI/CD y Postman.">
+  <meta name="keywords" content="QA Automatizador, QA Automation, Playwright, testing, CI/CD, Docker, Postman, Git">
+  <meta name="author" content="Christian Sanabria Jiménez">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#07110B">
+  <meta property="og:title" content="Christian Sanabria Jiménez | QA Automatizador">
+  <meta property="og:description" content="Portfolio profesional de QA Automatización.">
+  <meta property="og:type" content="website">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <title>Christian Sanabria Jiménez | QA Automatizador</title>
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: color var(--transition);
-        }
+  <style>
+    :root {
+      --green: #01C96E;
+      --green-dark: #009e57;
+      --black: #07110B;
+      --surface: #0b1710;
+      --surface-2: #0f1d14;
+      --border: rgba(1, 201, 110, .18);
+      --text: #f1f7f3;
+      --muted: #9aaca2;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, .28);
+    }
 
-        ul {
-            list-style: none;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Utilidades */
-        .container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 76px;
+    }
 
-        .section-title {
-            font-size: 2rem;
-            color: var(--accent-green);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
+    body {
+      font-family: "Montserrat", sans-serif;
+      background: var(--black);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-green);
-            color: var(--bg-dark);
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            border-radius: 4px;
-            border: 2px solid var(--accent-green);
-            transition: all var(--transition);
-            cursor: pointer;
-        }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
 
-        .btn:hover, .btn:focus {
-            background-color: transparent;
-            color: var(--accent-green);
-        }
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
 
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: rgba(1, 201, 110, 0.1);
-            color: var(--accent-green);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(1, 201, 110, 0.3);
-        }
+    .skip-link {
+      position: fixed;
+      left: 12px;
+      top: -60px;
+      z-index: 1000;
+      padding: 10px 16px;
+      background: var(--green);
+      color: var(--black);
+      font-weight: 800;
+      border-radius: 8px;
+      transition: top .2s ease;
+    }
 
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            background-color: var(--accent-green);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-green);
-            animation: pulse 2s infinite;
-        }
+    .skip-link:focus { top: 12px; }
 
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(1, 201, 110, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(1, 201, 110, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(1, 201, 110, 0); }
-        }
+    header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      background: rgba(7, 17, 11, .86);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      backdrop-filter: blur(14px);
+    }
 
-        /* Navegación */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(7, 17, 11, 0.95);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--card-bg);
-        }
+    nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
+    .logo {
+      font-weight: 800;
+      letter-spacing: -.04em;
+      font-size: 1.05rem;
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-green);
-        }
+    .logo span { color: var(--green); }
 
-        .nav-links {
-            display: none;
-            gap: 2rem;
-        }
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 26px;
+      font-size: .82rem;
+      font-weight: 600;
+    }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--accent-green);
-        }
+    .nav-links a {
+      color: var(--muted);
+      transition: color .2s ease;
+    }
 
-        .menu-btn {
-            display: block;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--green); }
 
-        /* Mobile Menu Activo */
-        .nav-links.active-menu {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            background-color: var(--bg-dark);
-            padding: 2rem;
-            border-bottom: 1px solid var(--accent-green);
-        }
+    .menu-btn {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      border-radius: 10px;
+      cursor: pointer;
+    }
 
-        /* Secciones */
-        section {
-            padding: 5rem 0;
-        }
+    .menu-btn span,
+    .menu-btn span::before,
+    .menu-btn span::after {
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      display: block;
+      position: relative;
+    }
 
-        /* Hero */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 70px;
-        }
+    .menu-btn span::before,
+    .menu-btn span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
 
-        .hero-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
+    .menu-btn span::before { top: -6px; }
+    .menu-btn span::after { top: 6px; }
 
-        .hero-content h2 {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-weight: 400;
-        }
+    .mobile-menu {
+      display: none;
+      padding: 0 0 18px;
+    }
 
-        /* Sobre Mí */
-        #sobre-mi p {
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 1.1rem;
-        }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 11px 0;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 600;
+    }
 
-        /* Skills */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      isolation: isolate;
+      padding: 110px 0 70px;
+    }
 
-        .skill-badge {
-            background-color: var(--card-bg);
-            border: 1px solid #1A3A25;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: border-color var(--transition);
-        }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -150px;
+      top: 12%;
+      background: var(--green);
+      filter: blur(110px);
+      opacity: .13;
+      z-index: -1;
+    }
 
-        .skill-badge:hover {
-            border-color: var(--accent-green);
-        }
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid rgba(1, 201, 110, .3);
+      background: rgba(1, 201, 110, .06);
+      color: var(--green);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
 
-        /* Proyectos */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
+    .availability::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(1,201,110,.1);
+    }
 
-        .project-card {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-green);
-            transition: transform var(--transition);
-        }
+    h1 {
+      max-width: 850px;
+      font-size: clamp(2.7rem, 12vw, 6rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      margin-bottom: 24px;
+    }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
+    h1 span { color: var(--green); }
 
-        .project-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
+    .hero-copy {
+      max-width: 670px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      margin-bottom: 32px;
+    }
 
-        .project-card p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 19px;
+      border-radius: 10px;
+      font-size: .82rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
 
-        .project-tech span {
-            font-size: 0.75rem;
-            background-color: rgba(1, 201, 110, 0.1);
-            color: var(--accent-green);
-            padding: 0.25rem 0.5rem;
-            border-radius: 2px;
-        }
+    .btn:hover { transform: translateY(-2px); }
 
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
+    .btn-primary {
+      color: var(--black);
+      background: var(--green);
+    }
 
-        .project-links a {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--accent-green);
-            text-decoration: underline;
-        }
+    .btn-primary:hover { background: #18d77e; }
 
-        /* Contacto */
-        #contacto {
-            text-align: center;
-            background-color: var(--card-bg);
-            border-top: 1px solid #1A3A25;
-        }
+    .btn-secondary {
+      border-color: var(--border);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+    }
 
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-            margin-top: 2rem;
-        }
+    .btn-secondary:hover { border-color: rgba(1,201,110,.5); }
 
-        .contact-links a {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
-        }
+    section { padding: 84px 0; }
 
-        .contact-links a:hover {
-            color: var(--accent-green);
-        }
+    .section-label {
+      color: var(--green);
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
+    h2 {
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      letter-spacing: -.045em;
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
 
-        /* Media Queries - Escritorio (Mobile-first fallback to Desktop) */
-        @media (min-width: 768px) {
-            .hero-content h1 { font-size: 4rem; }
-            .hero-content h2 { font-size: 2rem; }
-            
-            .menu-btn { display: none; }
-            .nav-links {
-                display: flex;
-                position: static;
-                flex-direction: row;
-                width: auto;
-                background: none;
-                padding: 0;
-                border: none;
-            }
+    .section-intro {
+      max-width: 680px;
+      color: var(--muted);
+      margin-bottom: 38px;
+    }
 
-            .projects-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+    .about-grid {
+      display: grid;
+      gap: 30px;
+    }
 
-            .contact-links {
-                flex-direction: row;
-                justify-content: center;
-                gap: 3rem;
-            }
-        }
-    </style>
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .about-highlights {
+      display: grid;
+      gap: 12px;
+    }
+
+    .highlight {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, var(--surface), rgba(11,23,16,.55));
+    }
+
+    .highlight strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: .92rem;
+    }
+
+    .highlight span {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .skills {
+      background: var(--surface);
+      border-block: 1px solid rgba(255,255,255,.04);
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge {
+      padding: 11px 15px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(1,201,110,.045);
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    .badge::before {
+      content: "✓";
+      color: var(--green);
+      margin-right: 8px;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .project-card {
+      position: relative;
+      min-height: 300px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(1,201,110,.09), transparent 32%),
+        var(--surface);
+      box-shadow: var(--shadow);
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(1,201,110,.42);
+    }
+
+    .project-number {
+      color: var(--green);
+      font-size: .72rem;
+      font-weight: 800;
+      margin-bottom: auto;
+    }
+
+    .project-card h3 {
+      font-size: 1.18rem;
+      margin: 32px 0 10px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: .83rem;
+      margin-bottom: 20px;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      list-style: none;
+    }
+
+    .tech-list li {
+      padding: 5px 8px;
+      border-radius: 6px;
+      background: rgba(255,255,255,.05);
+      color: #c5d2ca;
+      font-size: .67rem;
+      font-weight: 600;
+    }
+
+    .contact {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-box {
+      padding: 34px 24px;
+      border: 1px solid rgba(1,201,110,.25);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(1,201,110,.08), var(--surface));
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 15px;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: .82rem;
+      transition: border-color .2s ease, color .2s ease;
+    }
+
+    .contact-link:hover,
+    .contact-link:focus-visible {
+      color: var(--green);
+      border-color: var(--border);
+    }
+
+    .contact-link b {
+      color: var(--text);
+      font-size: .72rem;
+      min-width: 65px;
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: #718078;
+      font-size: .7rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
+    }
+
+    @media (min-width: 700px) {
+      .container { width: min(calc(100% - 48px), var(--max)); }
+      .menu-btn, .mobile-menu { display: none !important; }
+      .nav-links { display: flex; }
+      .about-grid { grid-template-columns: 1.4fr .8fr; align-items: start; }
+      .about-highlights { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-box { padding: 52px; }
+      .contact-links { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 980px) {
+      section { padding: 110px 0; }
+      .projects-grid { grid-template-columns: repeat(4, 1fr); }
+      .project-card { min-height: 360px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-    <header>
-        <nav class="container">
-            <a href="#" class="logo">&lt;QA /&gt;</a>
-            <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
-                ☰
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#hero" class="active">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre Mí</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav class="container" aria-label="Navegación principal">
+      <a class="logo" href="#inicio" aria-label="Inicio">QA<span>.</span></a>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero">
-            <div class="container hero-content">
-                <div class="status-badge" aria-label="Estado laboral: Disponibilidad inmediata">
-                    <span class="status-dot"></span>
-                    Disponibilidad inmediata
-                </div>
-                <h1>Christian Sanabria Jiménez</h1>
-                <h2>QA Automation Engineer</h2>
-                <p style="color: var(--text-muted); max-width: 600px; margin-bottom: 2rem;">
-                    Especialista en asegurar la calidad del software mediante la implementación de frameworks de pruebas robustos, escalables y mantenibles en entornos de integración continua.
-                </p>
-                <a href="ruta-a-tu-cv.pdf" class="btn" download="CV_[Tu_Nombre]_QA.pdf" aria-label="Descargar currículum vitae en formato PDF">Descargar CV</a>
-            </div>
-        </section>
+      <ul class="nav-links">
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
 
-        <!-- Sobre Mí -->
-        <section id="sobre-mi">
-            <div class="container">
-                <h2 class="section-title">Sobre Mí</h2>
-                <p>
-                    Ingeniero con sólida experiencia analítica en aseguramiento de calidad (QA). Me enfoco en la automatización de pruebas e2e y APIs, aplicando principios de arquitectura de software para reducir la deuda técnica de pruebas. Acostumbrado a operar en metodologías ágiles e híbridas, integrando estrategias de TDD/BDD para alinear los estándares de desarrollo con los objetivos de negocio.
-                </p>
-            </div>
-        </section>
+      <button class="menu-btn" id="menuBtn" type="button"
+              aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
 
-        <!-- Skills -->
-        <section id="skills">
-            <div class="container">
-                <h2 class="section-title">Habilidades Técnicas</h2>
-                <div class="skills-container">
-                    <span class="skill-badge">Playwright</span>
-                    <span class="skill-badge">Docker</span>
-                    <span class="skill-badge">Git</span>
-                    <span class="skill-badge">CI/CD</span>
-                    <span class="skill-badge">Postman</span>
-                    <span class="skill-badge">Selenium</span>
-                    <span class="skill-badge">JavaScript / TypeScript</span>
-                    <span class="skill-badge">SQL</span>
-                </div>
-            </div>
-        </section>
+    <div class="mobile-menu container" id="mobileMenu">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#skills">Skills</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </header>
 
-        <!-- Proyectos -->
-        <section id="proyectos">
-            <div class="container">
-                <h2 class="section-title">Proyectos Destacados</h2>
-                <div class="projects-grid">
-                    
-                    <!-- Proyecto 1 -->
-                    <article class="project-card">
-                        <h3>E2E con Playwright - E-commerce Suite</h3>
-                        <p>Framework de automatización end-to-end diseñado para una plataforma de e-commerce. Implementación de Page Object Model para asegurar mantenibilidad.</p>
-                        <div class="project-tech">
-                            <span>Playwright</span>
-                            <span>TypeScript</span>
-                            <span>GitHub Actions</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" rel="noopener noreferrer">Repositorio</a>
-                        </div>
-                    </article>
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="availability">Disponibilidad inmediata</div>
 
-                    <!-- Proyecto 2 -->
-                    <article class="project-card">
-                        <h3>API Testing Pipeline</h3>
-                        <p>Suite de validación de microservicios RESTful. Incluye validación de esquemas JSON, manejo dinámico de tokens y reportes automatizados mediante Allure.</p>
-                        <div class="project-tech">
-                            <span>Postman</span>
-                            <span>Newman</span>
-                            <span>Docker</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" rel="noopener noreferrer">Repositorio</a>
-                        </div>
-                    </article>
+        <h1 id="hero-title">
+          Christian Sanabria Jiménez<br>
+          <span>QA Automatizador</span>
+        </h1>
 
-                    <!-- Proyecto 3 -->
-                    <article class="project-card">
-                        <h3>Data Generation Tool</h3>
-                        <p>Script de utilidad para la generación de datos de prueba seudonimizados, cumpliendo normativas de protección de datos en entornos no productivos.</p>
-                        <div class="project-tech">
-                            <span>Node.js</span>
-                            <span>JavaScript</span>
-                            <span>Jest</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" rel="noopener noreferrer">Repositorio</a>
-                        </div>
-                    </article>
+        <p class="hero-copy">
+          Diseño y automatizo pruebas para construir software más confiable,
+          detectar regresiones antes y acelerar la entrega sin sacrificar calidad.
+        </p>
 
-                </div>
-            </div>
-        </section>
-
-        <!-- Contacto -->
-        <section id="contacto">
-            <div class="container">
-                <h2 class="section-title">Contacto</h2>
-                <p>Abierto a nuevas oportunidades y desafíos técnicos. Hablemos sobre arquitecturas de prueba y calidad de software.</p>
-                <div class="contact-links">
-                    <a href="mailto:tuemail@dominio.com" aria-label="Enviar correo electrónico">
-                        📧 tuemail@dominio.com
-                    </a>
-                    <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de LinkedIn">
-                        🔗 LinkedIn
-                    </a>
-                    <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de GitHub">
-                        💻 GitHub
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Christian Sanabria Jiménez. Desarrollado con HTML, CSS y JS puro.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacto">Hablemos</a>
+          <!-- Reemplaza cv.pdf por el nombre real de tu CV -->
+          <a class="btn btn-secondary" href="cv.pdf" download>Descargar CV</a>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- Lógica de Interacción -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Lógica Menú Móvil
-            const menuBtn = document.getElementById('menuBtn');
-            const navLinks = document.getElementById('navLinks');
+    <section id="sobre-mi" aria-labelledby="about-title">
+      <div class="container">
+        <p class="section-label">01 / Perfil</p>
+        <h2 id="about-title">Sobre mí</h2>
 
-            menuBtn.addEventListener('click', () => {
-                const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-                menuBtn.setAttribute('aria-expanded', !expanded);
-                navLinks.classList.toggle('active-menu');
-            });
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              Soy QA Automatizador enfocado en transformar escenarios de negocio
+              en pruebas repetibles, mantenibles y medibles.
+            </p>
+            <p>
+              Mi enfoque combina testing funcional, automatización end-to-end,
+              validación de APIs y prácticas de integración continua para reducir
+              riesgos y entregar feedback rápido al equipo de desarrollo.
+            </p>
+          </div>
 
-            // Cerrar menú móvil al hacer clic en un enlace
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if(window.innerWidth < 768) {
-                        navLinks.classList.remove('active-menu');
-                        menuBtn.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            });
+          <div class="about-highlights" aria-label="Especialidades">
+            <div class="highlight">
+              <strong>End-to-End</strong>
+              <span>Pruebas de flujos críticos de usuario.</span>
+            </div>
+            <div class="highlight">
+              <strong>API Testing</strong>
+              <span>Validación de contratos y respuestas.</span>
+            </div>
+            <div class="highlight">
+              <strong>CI/CD</strong>
+              <span>Automatización integrada al pipeline.</span>
+            </div>
+            <div class="highlight">
+              <strong>Quality Mindset</strong>
+              <span>Prevención, trazabilidad y feedback continuo.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            // Lógica Intersection Observer para resaltar enlaces del nav durante el scroll
-            const sections = document.querySelectorAll('section');
-            const navItems = document.querySelectorAll('.nav-links a');
+    <section class="skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <p class="section-label">02 / Stack</p>
+        <h2 id="skills-title">Skills</h2>
+        <p class="section-intro">
+          Herramientas que utilizo para automatizar, validar y entregar software con mayor confianza.
+        </p>
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.5 // Se activa cuando el 50% de la sección es visible
-            };
+        <div class="badges" role="list" aria-label="Tecnologías">
+          <span class="badge" role="listitem">Playwright</span>
+          <span class="badge" role="listitem">Docker</span>
+          <span class="badge" role="listitem">Git</span>
+          <span class="badge" role="listitem">CI/CD</span>
+          <span class="badge" role="listitem">Postman</span>
+          <span class="badge" role="listitem">JavaScript</span>
+          <span class="badge" role="listitem">API Testing</span>
+          <span class="badge" role="listitem">E2E Testing</span>
+        </div>
+      </div>
+    </section>
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const currentId = entry.target.getAttribute('id');
-                        navItems.forEach(item => {
-                            item.classList.remove('active');
-                            if (item.getAttribute('href') === `#${currentId}`) {
-                                item.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
+    <section id="proyectos" aria-labelledby="projects-title">
+      <div class="container">
+        <p class="section-label">03 / Trabajo</p>
+        <h2 id="projects-title">Proyectos</h2>
+        <p class="section-intro">
+          Ejemplos de soluciones de automatización que puedes adaptar a tus casos reales.
+        </p>
 
-            sections.forEach(section => observer.observe(section));
+        <div class="projects-grid">
+          <article class="project-card">
+            <span class="project-number">01</span>
+            <h3>Suite E2E Web</h3>
+            <p>
+              Automatización de journeys críticos con ejecución paralela,
+              evidencias y reportes para detectar regresiones rápidamente.
+            </p>
+            <ul class="tech-list" aria-label="Tecnologías">
+              <li>Playwright</li><li>JavaScript</li><li>CI/CD</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <span class="project-number">02</span>
+            <h3>API Test Framework</h3>
+            <p>
+              Validación automatizada de endpoints, códigos HTTP, payloads,
+              reglas de negocio y escenarios negativos.
+            </p>
+            <ul class="tech-list" aria-label="Tecnologías">
+              <li>Postman</li><li>API</li><li>JavaScript</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <span class="project-number">03</span>
+            <h3>QA en Docker</h3>
+            <p>
+              Entorno reproducible para ejecutar pruebas automatizadas de forma
+              consistente entre desarrollo, CI y distintos agentes.
+            </p>
+            <ul class="tech-list" aria-label="Tecnologías">
+              <li>Docker</li><li>Git</li><li>Playwright</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <span class="project-number">04</span>
+            <h3>Pipeline de Calidad</h3>
+            <p>
+              Integración de pruebas automáticas en CI/CD con criterios de
+              validación antes de promover cambios entre ambientes.
+            </p>
+            <ul class="tech-list" aria-label="Tecnologías">
+              <li>CI/CD</li><li>Git</li><li>QA</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-box">
+          <p class="section-label">04 / Contacto</p>
+          <h2 id="contact-title">Construyamos calidad.</h2>
+          <p class="section-intro">
+            Si buscas incorporar automatización y calidad al ciclo de desarrollo,
+            puedes contactarme por cualquiera de estos canales.
+          </p>
+
+          <div class="contact-links">
+            <!-- Sustituye los valores de ejemplo por tus datos reales -->
+            <a class="contact-link" href="mailto:csanabria@itcr.ac.cr">
+              <b>Email</b>
+              <span>csanabria@itcr.ac.cr</span>
+            </a>
+
+            <a class="contact-link" href="https://www.linkedin.com/in/csanabria/"
+               target="_blank" rel="noopener noreferrer">
+              <b>LinkedIn</b>
+              <span>/in/csanabria</span>
+            </a>
+
+            <a class="contact-link" href="https://github.com/csanabria"
+               target="_blank" rel="noopener noreferrer">
+              <b>GitHub</b>
+              <span>/csanabria</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Christian Sanabria Jiménez</span>
+      <span>QA Automation · Quality Engineering</span>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+
+      menuBtn.addEventListener("click", () => {
+        const open = mobileMenu.classList.toggle("open");
+        menuBtn.setAttribute("aria-expanded", String(open));
+        menuBtn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+          menuBtn.setAttribute("aria-expanded", "false");
+          menuBtn.setAttribute("aria-label", "Abrir menú");
         });
-    </script>
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
